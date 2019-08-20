@@ -8,7 +8,10 @@ from django.db import models
 class store(models.Model):
     store_name= models.CharField(max_length=250)
     store_address= models.CharField(max_length=250)
-    store_contact_no= models.IntegerField(max_length=9)
+    store_contact_no= models.IntegerField(max_length=12)
+    def __str__(self):
+        return self.store_name + ' - ' + self.store_contact_no
+
 
 class storedata(models.Model):
     store_location= models.ForeignKey(store, on_delete=models.CASCADE)
