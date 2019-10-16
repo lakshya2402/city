@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from django.db import models
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 templates_dir=os.path.join(BASE_DIR,"templates")
+static_dir=os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -25,7 +26,9 @@ SECRET_KEY = '3!3nrm1@9kp=f&&=pqi0m$g=z7@ohlh07w7rxij7+d%)vq0=r8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+"*",
+]
 
 
 # Application definition
@@ -33,6 +36,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 #this is our app1 data
     'data.apps.DataConfig',
+    'django_google_maps',
 #preinstalled
     'django.contrib.admin',
     'django.contrib.auth',
@@ -105,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
+GOOGLE_MAPS_API_KEY= 'AIzaSyBjXNsik9JTpLZbp7FgTDlUfjdiD9RZ_nc'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -121,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIR=[
+static_dir,
+
+]
